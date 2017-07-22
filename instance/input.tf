@@ -54,7 +54,7 @@ variable "root_volume_size" {
 
 variable "ami_user" {
   description = "Default username to use to access instance. Used for provisioning"
-  default = "ec2-user"
+  default = "centos"
 }
 
 variable "placement_group" {
