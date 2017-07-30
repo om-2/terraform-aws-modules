@@ -3,22 +3,22 @@
 # Required (no default specified, will throw plan error)
 variable "ami_id" {
   description = "ID of the AMI to launch"
-  type = "string"
+  type        = "string"
 }
 
 variable "fqdn" {
   description = "FQDN of the new instance. Passed to hostnamectl and used as ec2 Tag"
-  type = "string"
+  type        = "string"
 }
 
 variable "instance_type" {
   description = "Instance size"
-  type = "string"
+  type        = "string"
 }
 
 variable "key_name" {
   description = "Initial SSH Key to seed instance with"
-  type = "string"
+  type        = "string"
 }
 
 variable "subnet_id" {
@@ -27,12 +27,12 @@ variable "subnet_id" {
 
 variable "security_group_ids" {
   description = "List of security groups to associate with the instance"
-  type = "list"
+  type        = "list"
 }
 
 variable "assign_public_ip" {
   description = "Associate a public IP address with instance"
-  type = "string"
+  type        = "string"
 }
 
 # There's a chicken and egg problem here. To make this instance we require
@@ -45,35 +45,39 @@ variable "bastion_user" {
   description = "Username to use for bastion host during provisioning. Key must be in agent"
 }
 
-
 # Optional parameters (default specified, not needed when requiring module)
 variable "root_volume_size" {
   description = "Size in GB of root volume (default 20gb)"
-  default = "20"
+  default     = "20"
 }
 
 variable "ami_user" {
   description = "Default username to use to access instance. Used for provisioning"
-  default = "centos"
+  default     = "centos"
 }
 
 variable "placement_group" {
   description = "Name of placement group where instance is created"
-  type = "string"
-  default = ""
+  type        = "string"
+  default     = ""
 }
 
 variable "source_dest_check" {
   description = "Enable or disable EC2 source and destination checking of packets"
-  default = "true"
+  default     = "true"
 }
 
 variable "ebs_optimized" {
   description = "EBS optimized instance"
-  default = "false"
+  default     = "false"
 }
 
 variable "iam_instance_profile" {
   description = "(Optional) The IAM Instance Profile to launch the instance with."
-  default = ""
+  default     = ""
+}
+
+variable "user_data" {
+  description = "Raw user_data contents to launch instance with."
+  default     = ""
 }
